@@ -305,6 +305,9 @@ class Chef
 
         if vpc_mode?
           msg_pair("Subnet ID", @server.subnet_id)
+          if config[:associate_public_ip]
+            msg_pair("Public DNS Name", @server.dns_name)
+          end
           if elastic_ip
             msg_pair("Public IP Address", @server.public_ip_address)
           end
@@ -353,6 +356,9 @@ class Chef
         end
         if vpc_mode?
           msg_pair("Subnet ID", @server.subnet_id)
+          if config[:associate_public_ip]
+            msg_pair("Public DNS Name", @server.dns_name)
+          end
         else
           msg_pair("Public DNS Name", @server.dns_name)
           msg_pair("Public IP Address", @server.public_ip_address)
